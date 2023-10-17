@@ -7,18 +7,13 @@ const Home = (props)=>{
     const [data,setData] = useState([]);
 
     return (
-        <div>
-            <table class="table">
-                <tbody>{
-                    data.map((obj)=>{
-                        <tr >
-                            <th scope="row">{obj?.title}</th>
-                            <td>{obj?.img}</td>
-                        </tr>
-                    })}
-                </tbody>
-            </table>
-        </div>
+        <>
+            <div>
+                <h1>
+                    Holaa
+                </h1>
+            </div>
+        </>
     );
 }
 
