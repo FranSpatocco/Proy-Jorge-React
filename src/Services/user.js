@@ -12,3 +12,16 @@ export const handlerLogIn = async (name, pass) => {
 
     return rsp;
 }
+
+export const create = async (name, pass, token) => {
+
+    let url = "/user/create";
+    let requestData = {
+        user_name: name,
+        password: pass
+    }
+
+    let rsp = await POST(url, requestData, token);
+
+    return rsp;
+}

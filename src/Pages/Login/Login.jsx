@@ -2,23 +2,28 @@ import Button from "../../Components/Buttons/Button";
 import "./Login.css"
 import { useState } from "react";
 import { handlerLogIn } from "../../Services/user";
+import { Navigate } from "react-router-dom";
 
 
 const Login = (props)=>{
 
 const[formData,setFormData]=useState({});
+    const[isOnNav,setIsOnNav]=useState(false);
 
     const handlerSubm = async (e) => {
         e.preventDefault();
         let rsp = await handlerLogIn(formData.user_name, formData.password);
-
         console.log(rsp);
+        if (rsp.access_token !== undefined){
+            props.setToken(rsp.access_token);
+            setIsOnNav(true)
+        }
     }
-
-
-
     return (
         <>
+        {
+            isOnNav && <Navigate to="/register" replace={true} />
+        }
         <div class="body">  
             <div>
                 <h1>Ingrese sus datos</h1>
