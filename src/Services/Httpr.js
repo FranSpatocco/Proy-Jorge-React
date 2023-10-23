@@ -12,7 +12,7 @@ export const POST = async (url, requestData, token = "") => {
         mode:"cors",
         headers: {
             "Content-Type":"application/json",
-            "Authorization": `Bearer ${token}` || ""
+            "Authorization": `Bearer ${localStorage.getItem('access_token')}` || ""
         },
         body: JSON.stringify(requestData)
     })
@@ -21,4 +21,23 @@ export const POST = async (url, requestData, token = "") => {
     .catch((err) => err);
 ;
 
+}
+
+export async function GET(url, request = null){
+
+    let uri = "";
+    if(request){
+        uri = '?' + new URLSearchParams(request).toString(); 
+    }
+
+    return await fetch(backendurl + url + uri, {
+        method:'GET',
+        mode:'cors',
+        headers:{
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}` || ''
+        }
+    })
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((err) => err);
 }

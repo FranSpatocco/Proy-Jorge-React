@@ -1,4 +1,4 @@
-import { POST } from "./Httpr";
+import { POST,GET } from "./Httpr";
 
 export const handlerLogIn = async (name, pass) => {
 
@@ -24,4 +24,14 @@ export const create = async (name, pass, token) => {
     let rsp = await POST(url, requestData, token);
 
     return rsp;
+}
+
+export const GETUSER = async () => {
+    let url="/user/search"
+    let requestData = {
+        user_name: "",
+        password: pass
+    }
+
+    
 }
