@@ -1,6 +1,6 @@
 import { json } from "react-router-dom";
 
-const backendURL = "http://192.168.0.144:3001/api"
+const backendURL = "http://192.168.0.161:3001/api"
 
 
 export const POST = async (url, requestData, token = "") => {
